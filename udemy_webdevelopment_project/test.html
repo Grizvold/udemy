@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-US">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://ez-css.now.sh">
+    <style>
+        .done{
+            text-decoration: line-through;
+        }
+    </style>
+    <head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Today's Date</title>
-    <script>
-        let d = new Date();
-        alert("Today's date is " + d);
-    </script>
-</head>
+    </head>
+    <body>
+        <main id="app">
+            <h3>{{title}}</h3>
+            <form @submit.prevent="addTodo">
+                <label for="newTodo">New Todo</label>
+                <input v-model="newTodo" type="text" name="newTodo" id="newTodo">
+                <button type="submit" name="AddTask">Add Task</button>
+            </form>
+        <button @click="allDone" name="markAllDoneButton" type="button">Mark All Done</button>    
+        <ul>
+            <li v-for="todo in todoArray">
+                <input type="checkbox" v-model="todo.done">
+                <span :class="{ done: todo.done}">{{todo.title}}</span>
+                <button @click="removeTodo(todo)" name="removeButton" type="button">Remove Todo</button>
+            </li>
+        </ul>
+        </main> 
 
-<body>
-
-</body>
-
-
-
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="test.js" charset="utf-8"></script>
+    </body>
 </html>
